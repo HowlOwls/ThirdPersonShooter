@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+
 
 namespace Controllers
 {

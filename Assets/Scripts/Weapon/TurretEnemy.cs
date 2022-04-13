@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace Weapon
@@ -14,7 +12,7 @@ namespace Weapon
        private float turnSpeed = 1;
        [SerializeField] private float sightRange = 15f;
        [SerializeField] private float attackRange = 10f;
-       [SerializeField] private float dist;
+       
        [SerializeField] private bool playerInSightRange;
        [SerializeField] private bool playerInAttackRange;
        [SerializeField] private bool alreadyAttack;
@@ -22,41 +20,35 @@ namespace Weapon
        
        private void Awake()
        {
-           target = GameObject.Find("Player").transform;
+           target = GameObject.Find("LookAt").transform;
        }
     
        private void Update()
        { 
            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
           playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
-          dist = Vector3.Distance(target.transform.position, transform.position);
+          
           Vector3 targetDir = target.position - transform.position;
           float singleStep = turnSpeed * Time.deltaTime;
-          
+          Vector3 newDirect = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0f);
           
           if (playerInSightRange && !playerInAttackRange)
           {
-              Vector3 newDirect = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0f);
               transform.rotation = Quaternion.LookRotation(newDirect);
           }
           
-          
-          
           if (playerInSightRange && playerInAttackRange)
           {
+              transform.rotation = Quaternion.LookRotation(newDirect);
               Attack();
           }
        }
        private void Attack()
        {
-           Vector3 targetDir = target.position - transform.position;
-           float singleStep = turnSpeed * Time.deltaTime;
-           Vector3 newDirect = Vector3.RotateTowards(transform.forward, targetDir, singleStep, 0f);
-           transform.rotation = Quaternion.LookRotation(newDirect);
-           
            if (!alreadyAttack)
            {
-               var bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+               var bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+               bullet.GetComponent<Rigidbody>().velocity = (target.position - transform.position).normalized * 10f;
                alreadyAttack = true;
                Invoke(nameof(ResetAttack), timeBtwAttack);
            }

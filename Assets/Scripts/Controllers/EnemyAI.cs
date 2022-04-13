@@ -2,16 +2,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
 namespace Controllers
 {
         public class EnemyAI : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent agent;
-        [SerializeField] private Transform player;
-        [SerializeField] private LayerMask groundLayer, playerLayer;
-        [SerializeField] private GameObject bullet;
+        [SerializeField] private Transform target;
+        [SerializeField] private LayerMask playerLayer;
+        [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform spawnPoint;
         
         [SerializeField] private Transform[] waypoints;
@@ -24,11 +23,10 @@ namespace Controllers
         [SerializeField] private bool playerInSightRange, playerInAttackRange;
         [SerializeField] private bool alreadyAttack;
 
-        private float timeBtwAttack = 5f;
-        private Rigidbody rb;
+        private float timeBtwAttack = 1f;
         private void Awake()
         {
-            player = GameObject.Find("Player").transform;
+            target = GameObject.Find("LookAt").transform;
             agent = GetComponent<NavMeshAgent>();
         }
 
@@ -42,7 +40,7 @@ namespace Controllers
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
            
-            dist = Vector3.Distance(player.transform.position, transform.position);
+            dist = Vector3.Distance(target.transform.position, transform.position);
 
             if (!playerInSightRange && !playerInAttackRange)
             {
@@ -55,8 +53,7 @@ namespace Controllers
 
             if (playerInSightRange && !playerInAttackRange) // Если в радиусе обнаружения идет преследует игрока
             {
-                
-                agent.SetDestination(player.transform.position);
+                agent.SetDestination(target.transform.position);
             }
             
             if (playerInSightRange && playerInAttackRange) // если в радиусе обнаружения и атаки, атакует
@@ -68,15 +65,15 @@ namespace Controllers
         private void AttackPlayer()
         {
             agent.SetDestination(transform.position);
-            transform.LookAt(player);
+            transform.LookAt(target);
             if (!alreadyAttack)
             {
-                Rigidbody rb = Instantiate(bullet, spawnPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-                rb.AddForce(player.transform.position * 1f, ForceMode.Impulse);
+                var bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+                bullet.GetComponent<Rigidbody>().velocity = (target.position - transform.position).normalized * 10f;
                 alreadyAttack = true;
                 Invoke(nameof(ResetAttack), timeBtwAttack);
+                
             }
-            
         }
         private void ResetAttack()
         {

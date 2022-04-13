@@ -21,11 +21,12 @@ namespace Weapons
         private void Update()
         {
             countdown -= Time.deltaTime;
-       
-            if (countdown <= 0f && !hasExploded)
+
+            if (countdown <= 0f && !hasExploded && curGrenade > 0);
             {
                 Explode();
                 hasExploded = true;
+                curGrenade--;
             }
         }
         private void Explode()

@@ -63,9 +63,8 @@
      <Compile Include="Assets\Scripts\Controllers\AimStateManager.cs" />
      <Compile Include="Assets\Scripts\Weapon\TurretEnemy.cs" />
      <Compile Include="Assets\Scripts\Weapon\Ak47.cs" />
+     <Compile Include="Assets\TestEnemy.cs" />
      <Compile Include="Assets\Scripts\Controllers\EnemyAI.cs" />
-     <Compile Include="Assets\Scripts\Weapon\TestMineEnemy.cs" />
-     <Compile Include="Assets\Scripts\Weapon\LandMine.cs" />
      <Compile Include="Assets\Scripts\Weapon\ChangeWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapon\Grenade.cs" />
      <Compile Include="Assets\Scripts\Controllers\SceneController.cs" />
