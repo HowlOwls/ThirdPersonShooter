@@ -6,7 +6,7 @@ namespace Weapon
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] private int health = 100;
+        public int health = 100;
     
         public void Hit(int damage)
         {

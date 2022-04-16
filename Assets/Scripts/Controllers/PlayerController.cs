@@ -57,7 +57,6 @@ namespace Controllers
          move.y = 0f;
          controller.Move(move.normalized * Time.deltaTime * playerSpeed);
          
-         //Вызываем анимацию ходьбы
          animator.SetFloat(hzInputAnimationParameterId, input.x);
          animator.SetFloat(vInputAnimationParameterId, input.y);
          
@@ -74,6 +73,7 @@ namespace Controllers
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -2f * gravityValue);
             animator.CrossFade(jumpAnimation, animationPlayTransition);
          }
+         
          playerVelocity.y += gravityValue * Time.deltaTime;
          controller.Move(playerVelocity * Time.deltaTime);
       }
