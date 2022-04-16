@@ -12,7 +12,6 @@ namespace Controllers
         [SerializeField] private CinemachineVirtualCamera zoomCamera;
         private InputAction aimAction;
         [SerializeField] private int priorityBoostAmount = 10;
-        [SerializeField] private Canvas thirdPersonCanvas;
         [SerializeField] private Canvas zoomCanvas;
         private void Awake()
         {
@@ -36,14 +35,12 @@ namespace Controllers
         {
             zoomCamera.Priority += priorityBoostAmount;
             zoomCanvas.enabled = true;
-            thirdPersonCanvas.enabled = false;
         }
 
         private void CancelAim()
         {
             zoomCamera.Priority -= priorityBoostAmount;
-            zoomCanvas.enabled = false;
-            thirdPersonCanvas.enabled = true;
+            zoomCanvas.enabled = true;
         }
 
     }

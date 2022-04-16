@@ -52,22 +52,40 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Controllers\Health.cs" />
+     <Compile Include="Assets\Scripts\Weapon\LandMine.cs" />
+     <Compile Include="Assets\Scripts\Weapon\Health.cs" />
      <Compile Include="Assets\Scripts\Controllers\ZoomThenAim.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Weapon\PutMine.cs" />
      <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
      <Compile Include="Assets\Scripts\Weapon\ThrowingGrenade.cs" />
      <Compile Include="Assets\Scripts\Weapon\Pistol.cs" />
      <Compile Include="Assets\Scripts\Weapon\EnemyBullet.cs" />
+     <Compile Include="Assets\Scripts\TriggerForBox.cs" />
      <Compile Include="Assets\Scripts\Weapon\PickUpPistolAmmo.cs" />
      <Compile Include="Assets\Scripts\Controllers\AimStateManager.cs" />
      <Compile Include="Assets\Scripts\Weapon\TurretEnemy.cs" />
      <Compile Include="Assets\Scripts\Weapon\Ak47.cs" />
-     <Compile Include="Assets\TestEnemy.cs" />
+     <Compile Include="Assets\Scripts\TestEnemy.cs" />
      <Compile Include="Assets\Scripts\Controllers\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\PushingBox.cs" />
      <Compile Include="Assets\Scripts\Weapon\ChangeWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapon\Grenade.cs" />
-     <Compile Include="Assets\Scripts\Controllers\SceneController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\SpawnEnemyPatrolling.cs" />
+     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft Scroll.shader" />
+     <None Include="Assets\JMO Assets\WarFX\_Effects\MuzzleFlashes\!MuzzleFlash Differences.txt" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Alpha-Specular TintColor.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Add Scroll.shader" />
+     <None Include="Assets\JMO Assets\WarFX\_Effects (Mobile)\MuzzleFlashes\!MuzzleFlash Differences.txt" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Particle Add A8.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Smoke Scroll.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Particle Multiply A8.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S AlphaBlend Scroll.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Particle AddSoft A8.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Alpha-Diffuse TintColor.shader" />
+     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S AlphaBlend NoSoftParticles.shader" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Weapons
+namespace Weapon
 {
    public class ThrowingGrenade : MonoBehaviour
    {
-      [SerializeField] private Camera cam;
       [SerializeField] private GameObject grenadePref;
       [SerializeField] private Transform spawnPosition;
       [SerializeField] private float throwForce;

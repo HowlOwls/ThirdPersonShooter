@@ -6,6 +6,9 @@ TagManager:
   tags:
   - EnemySpawner
   - Enemy
+  - FxTemporaire
+  - Ground
+  - TriggerBox
   layers:
   - Default
   - TransparentFX

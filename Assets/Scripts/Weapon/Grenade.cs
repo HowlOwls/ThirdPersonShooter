@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace Weapons
+namespace Weapon
 {
     public class Grenade : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace Weapons
         {
             countdown -= Time.deltaTime;
 
-            if (countdown <= 0f && !hasExploded && curGrenade > 0);
+            if (countdown <= 0f && !hasExploded && curGrenade > 0)
             {
                 Explode();
                 hasExploded = true;
